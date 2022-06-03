@@ -6,7 +6,13 @@ display.readOnly = true;
 root.append(display);
 let operationIsDone = false;
 
-const clickHandler = (value) => (display.value += value);
+const clickHandler = (value) => {
+  if (operationIsDone) {
+    display.value = "";
+    operationIsDone = false;
+  }
+  display.value += value;
+};
 
 const back = () => {
   if (operationIsDone) {
