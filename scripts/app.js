@@ -1,10 +1,79 @@
-import { buttons } from "./data.js";
-
 const root = document.getElementById("root");
 const display = document.createElement("input");
 display.readOnly = true;
 root.append(display);
 let operationIsDone = false;
+
+const buttons = [
+  {
+    value: "0",
+    onClick: () => clickHandler("0"),
+  },
+  {
+    value: "1",
+    onClick: () => clickHandler("1"),
+  },
+  {
+    value: "2",
+    onClick: () => clickHandler("2"),
+  },
+  {
+    value: "3",
+    onClick: () => clickHandler("3"),
+  },
+  {
+    value: "4",
+    onClick: () => clickHandler("4"),
+  },
+  {
+    value: "5",
+    onClick: () => clickHandler("5"),
+  },
+  {
+    value: "6",
+    onClick: () => clickHandler("6"),
+  },
+  {
+    value: "7",
+    onClick: () => clickHandler("7"),
+  },
+  {
+    value: "8",
+    onClick: () => clickHandler("8"),
+  },
+  {
+    value: "9",
+    onClick: () => clickHandler("9"),
+  },
+  {
+    value: "+",
+    onClick: () => clickHandler("+"),
+  },
+  {
+    value: "-",
+    onClick: () => clickHandler("-"),
+  },
+  {
+    value: "*",
+    onClick: () => clickHandler("*"),
+  },
+  {
+    value: "/",
+    onClick: () => clickHandler("/"),
+  },
+  {
+    value: ".",
+    onClick: () => clickHandler("."),
+  },
+  {
+    value: "=",
+    onClick: () => result(),
+  },
+  {
+    value: "Back",
+    onClick: () => back(),
+  },
+];
 
 const clickHandler = (value) => {
   if (operationIsDone) {
@@ -27,20 +96,12 @@ const result = () => {
 };
 
 const renderer = (buttonsArray) => {
-  buttonsArray.map((button) => {
+  buttonsArray.map(({ value, onClick }) => {
     const buttonElem = document.createElement("button");
-    buttonElem.innerHTML = button.value;
+    buttonElem.textContent = value;
     root.append(buttonElem);
-    buttonElem.addEventListener("click", clickHandler.bind(null, button.value));
+    buttonElem.addEventListener("click", onClick);
   });
-  const equateBtn = document.createElement("button");
-  equateBtn.innerHTML = "=";
-  root.append(equateBtn);
-  equateBtn.addEventListener("click", result);
-  const backspace = document.createElement("button");
-  backspace.innerHTML = "Back";
-  root.append(backspace);
-  backspace.addEventListener("click", back);
 };
 
 renderer(buttons);
