@@ -21,9 +21,11 @@ const back = () => {
   } else display.value = display.value.substring(0, display.value.length - 1);
 };
 
+const evaluator = (exp) => new Function("return " + exp)();
+
 const result = () => {
   operationIsDone = true;
-  display.value = eval(display.value).toFixed(2);
+  display.value = evaluator(display.value).toFixed(2);
 };
 
 buttons
