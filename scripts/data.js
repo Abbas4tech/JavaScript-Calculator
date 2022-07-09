@@ -1,5 +1,4 @@
 export const buttons = [
-  0,
   1,
   2,
   3,
@@ -9,11 +8,12 @@ export const buttons = [
   7,
   8,
   9,
+  0,
   "+",
   "-",
   "*",
   "/",
   ".",
-  "=",
   "Back",
+  "=",
 ];

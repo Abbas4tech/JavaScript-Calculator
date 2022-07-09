@@ -1,9 +1,9 @@
 import { buttons } from "./data.js";
 
 const root = document.getElementById("root");
-const display = document.createElement("input");
-display.readOnly = true;
-root.append(display);
+const display = document.getElementById("input");
+const grid = document.createElement("article");
+root.append(grid);
 let operationIsDone = false;
 
 const clickHandler = (value) => {
@@ -37,6 +37,6 @@ buttons
   .forEach(({ value, onClick }) => {
     const buttonElem = document.createElement("button");
     buttonElem.textContent = value;
-    root.append(buttonElem);
+    grid.append(buttonElem);
     buttonElem.addEventListener("click", onClick);
   });
